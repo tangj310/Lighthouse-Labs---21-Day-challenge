@@ -76,3 +76,33 @@ random.shuffle(hole_sizes)
 
 # hole sizes in mm
 hole_sizes[:5]
+
+
+
+SOLUTIONS:
+import pandas as pd
+total_cost_list = []
+series = pd.Series(hole_sizes)
+
+print(series.mean()) #Q1
+
+
+
+for n in hole_sizes:
+    
+    if n < 20:
+        cost = 1.3
+        total_cost =+ cost
+        total_cost_list.append(total_cost)
+    elif 20 <= n <70:
+        cost = 1.6
+        total_cost =+ cost
+        total_cost_list.append(total_cost)
+    elif n >= 70:
+        cost = 2.1
+        total_cost =+ cost
+        total_cost_list.append(total_cost)
+        
+
+total_cost = round(sum(total_cost_list),3) #Q3
+average_cost = round(total_cost / len(hole_sizes),3) #Q2
