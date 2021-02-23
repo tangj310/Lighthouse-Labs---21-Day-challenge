@@ -1,0 +1,46 @@
+#example dicitonary
+user_boxes = {'weight': [4,2,18,21,14,13],
+              'box_name': ['box1','box2', 'box3', 'box4', 'box5', 'box6']
+             }
+             
+             
+ sort from the lightest to the heaviest
+ 
+ Solution 1:
+ import pandas as pd
+
+df = pd.DataFrame(user_boxes)
+sorted_df = df.sort_values(['weight'])
+
+print(sorted_df['box_name'])
+
+
+Solution 2: (Bubble sorting)
+
+bubble sorting iterates the list and finds the biggest number to put it at the end of the list
+2nd largest number to the 2nd end position
+3rd largest number to the 3rd end position...
+
+so there involves 2 loops, one exteral loop, one internal loop(swaping 2 numbers, if the pervious on is bigger)
+
+
+# Most practical sorting algorithms have substantially better worst-case or average complexity
+# Therefore, bubble sort is not a practical sorting algorithm
+
+list_1 = [8,5,6,1,77,9,456,3,5,8,1,3546,8,5,66]
+
+
+def bubble_sort():
+    
+    for i in range(len(list_1)-1,0,-1):
+        for n in range(i):
+
+            if list_1[n] > list_1[n+1]:
+
+                temp = list_1[n] # use a temp variable to assign the larger value
+                list_1[n] = list_1[n+1] # swap the 2 values
+                list_1[n+1] = temp # reassign the larger value
+            
+    return list_1
+
+bubble_sort()
