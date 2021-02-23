@@ -27,19 +27,25 @@ so there involves 2 loops, one exteral loop, one internal loop(swaping 2 numbers
 # Most practical sorting algorithms have substantially better worst-case or average complexity
 # Therefore, bubble sort is not a practical sorting algorithm
 
-list_1 = [8,5,6,1,77,9,456,3,5,8,1,3546,8,5,66]
+list_1 = [8,5,6,1,77,5]
 
 
 def bubble_sort():
     
-    for i in range(len(list_1)-1,0,-1):
-        for n in range(i):
+    for i in range(len(list_1)):
+        
+        already_sorted = True
+        
+        for j in range(len(list_1) - i - 1):
+            if list_1[j] > list_1[j+1]:
 
-            if list_1[n] > list_1[n+1]:
-
-                temp = list_1[n] # use a temp variable to assign the larger value
-                list_1[n] = list_1[n+1] # swap the 2 values
-                list_1[n+1] = temp # reassign the larger value
+                temp = list_1[j] # use a temp variable to assign the larger value
+                list_1[j] = list_1[j+1] # swap the 2 values
+                list_1[j+1] = temp # reassign the larger value
+                already_sorted = False
+                
+        if already_sorted:
+            break
             
     return list_1
 
