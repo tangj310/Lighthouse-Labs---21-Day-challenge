@@ -1,0 +1,6 @@
+filt_1 = (df['Monthly milk production: pounds per cow'] == df['Monthly milk production: pounds per cow'].max())
+filt_2 = (df['Monthly milk production: pounds per cow'] == df['Monthly milk production: pounds per cow'].min())
+
+print(df.loc[filt_1])
+print(df.loc[filt_2])
+
