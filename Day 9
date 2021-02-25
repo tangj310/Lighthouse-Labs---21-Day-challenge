@@ -1,0 +1,50 @@
+Question:
+import pandas as pd
+df = pd.read_csv('milk_2.csv')
+
+print(df.head(3)) #Inputing the value 3 inside the brackets of the df.head() function allows us to
+                  #override the default value of 5.
+print('\n') # 
+
+print(df.shape)
+
+
+Fill out the missing values in the monthly milk production column with the median, and fill out the number of cows column using the ffill method.
+
+After filling in the missing values with our new data, answer these questions for Dot, so they can figure out the value of having a cow year-round:
+
+What is the average for monthly milk production?
+What is the standard deviation for monthly milk production?
+What is the average number of cows used?
+
+
+
+
+Solutions:
+
+# calculate the median
+med = df['Monthly milk production: pounds per cow'].median()
+
+# Fill out the missing values in the monthly milk production column with the median
+values = {'Monthly milk production: pounds per cow':med}
+df.fillna(value=values,inplace=True)
+
+#  fill out the number of cows column using the ffill method
+df['Number of Cows'] = df['Number of Cows'].fillna(method = 'ffill')
+
+# double-check there is no NA in the datafram
+df.info()
+
+
+print(df['Monthly milk production: pounds per cow'].mean())
+print(df['Monthly milk production: pounds per cow'].std())
+print(df['Number of Cows'].mean())
+
+
+Key takeaway:
+
+1. df.info() to check the dataframe information and check if there is any NA
+
+2. The equation for filling in missing values:
+df['column_name'] = df['column_name'].fillna(value = 100)
+df['column_name'] = df['column_name'].fillna(method = 'backfill')
