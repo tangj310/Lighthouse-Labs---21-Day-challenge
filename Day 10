@@ -1,0 +1,32 @@
+Questions:
+
+import pandas as pd
+
+df = pd.read_csv('milk_32.csv')
+df = df.drop(columns = ['Unnamed: 0'])
+                                
+df.head()
+
+Challenge
+
+Help Dot figure out how profitable selling fresh milk can be, by looking at the dataset for the cow farm. Fill in the values for the following columns based on the available data:
+
+Total Milk Production
+Total Revenue
+How much revenue did the cow farm make in the year 2020?
+
+
+Solutions:
+
+df['Total Milk Production'] = df['Monthly milk production: pounds per cow'] * df['Number of Cows']
+df['Total Revenue'] = df['Total Milk Production'] * df['Price_Per_Pound']
+
+df.loc[155:166,'Total Revenue'].sum()
+
+
+Key takeaways:
+
+df['new_column'] = df['column_1'] + df['column_2']
+df['new_column'] = df['column_1'] * df['column_2']
+
+df['new_column'] = (df['column_1'] + df['column_2'])/(df['column_1'])
