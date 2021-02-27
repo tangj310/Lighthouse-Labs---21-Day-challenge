@@ -1,0 +1,50 @@
+Questions:
+
+import pandas as pd
+
+df = pd.read_csv('avocado.csv', index_col = 0)
+df.head()
+
+Below is a list of aggregate functions we can use on our group bys.
+
+count() – Number of non-null observations
+sum() – Sum of values
+mean() – Mean of values
+median() – Arithmetic median of values
+min() – Minimum
+max() – Maximum
+mode() – Mode
+std() – Standard deviation
+var() – Variance
+
+eg. df.groupby(['year','type']).count()
+
+
+Solutions_1:
+
+df.info()
+
+filter_1 = (df['year'] == 2017)&(df['region'] == 'Albany')  #create a filter to reshape the dataframe
+df[filter_1]['AveragePrice'].mean()   # in the reshaped dataframe, select the series and calculate the mean
+
+
+Solutions_2
+
+groupedDF = df.groupby(['year','region']).mean()    # use groupby function to reshape the dataframe by groups
+groupedDF.loc[(2017,'Albany')]['AveragePrice']      # use df.loc to locate the certain series and rows
+
+
+
+Key takeaway:
+
+df.groupby function to reshape the DF by certain groups
+and aggreate functions after the groupby fucntions
+count() – Number of non-null observations
+sum() – Sum of values
+mean() – Mean of values
+median() – Arithmetic median of values
+min() – Minimum
+max() – Maximum
+mode() – Mode
+std() – Standard deviation
+var() – Variance
