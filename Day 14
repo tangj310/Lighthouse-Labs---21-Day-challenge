@@ -1,0 +1,57 @@
+Questions:
+
+Tutorial
+In today's challenge, you will be using and combining the various functions you have learned over the last few challenges.
+
+1.Pandas Filters
+Pandas Filters was introduced in the Day 12 challenge.
+2.sort_values()
+The df.sort_values() function was introduced in the Day 13 challenge.
+3.Pandas Group Bys
+Pandas Group Bys was introduced in the Day 11 challenge.
+
+
+Challenge
+Dot's neighbour said that he only likes wine from Stellenbosch, Bordeaux, and the Okanagan Valley, and that the sulfates can't be that high. The problem is, Dot can't really afford to spend tons of money on the wine. Dot's conditions for searching for wine are:
+
+Sulfates cannot be higher than 0.6.
+The price has to be less than $20.
+Use the above conditions to filter the data for questions 2 and 3 below.
+
+Questions:
+
+Where is Stellenbosch, anyway? How many wines from Stellenbosch are there in the entire dataset?
+After filtering with the 2 conditions, what is the average price of wine from the Bordeaux region?
+After filtering with the 2 conditions, what is the least expensive wine that's of the highest quality from the Okanagan Valley?
+
+
+
+Solutions:
+
+import pandas as pd
+df = pd.read_csv('winequality-red_2.csv')
+df = df.drop(columns = ['Unnamed: 0'])
+
+df.head()
+
+#Where is Stellenbosch, anyway? How many wines from Stellenbosch are there in the entire dataset?
+groupeddf = df.groupby(['region'])
+groupeddf.count()
+
+#After filtering with the 2 conditions, what is the average price of wine from the Bordeaux region?
+# Sulfates cannot be higher than 0.6.
+# The price has to be less than $20.
+filter_1 = (df['sulphates'] <= 0.6)&(df['price'] < 20)&(df['region'] == 'Bordeaux')
+df[filter_1]['price'].mean()
+
+#After filtering with the 2 conditions, what is the least expensive wine that's of the highest quality from the Okanagan Valley?
+# Sulfates cannot be higher than 0.6.
+# The price has to be less than $20.
+filter_2 = (df['sulphates'] <= 0.6)&(df['price'] < 20)&(df['region'] == 'Okanagan Valley')
+df[filter_2].sort_values('price',ascending=True).sort_values('quality',ascending=False)
+
+
+
+Key takeaway:
+
+combined fucntion use on df.groupby()/df filter/df.sort_values()
