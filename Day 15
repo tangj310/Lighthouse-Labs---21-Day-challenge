@@ -65,6 +65,7 @@ df['Total_Seeds'] = df['Seeds_Count'] * df['Each_Seed_Produces']
 
 plt.figure()
 plt.bar(x = df['Vegetable'], height = df['Total_Seeds'])
+plt.title('Total Seeds of each vegetables')
 plt.show()
 
 
