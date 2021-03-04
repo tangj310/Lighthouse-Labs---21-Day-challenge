@@ -1,0 +1,73 @@
+All about Data Visualization
+
+Tutorial
+Data visualization refers to the graphical representation of information and data. By using visual elements such as charts and graphs, data visualization tools provide us with an accessible way to understand trends, outliers, and relationships in our data. It enables us to communicate data insights to others and understand the data better ourselves. Understanding how to use a data visualization tool is essential for anyone who uses data in their work.
+
+One of the most popular visualization plugins for Python is Matplotlib, a plotting library. Matplotlib is popular for how easy it makes building statistical plots, as well as for the excellent community support and the wide availability of tutorials online.
+
+Read this article to increase your understanding of best practices in data visualization.
+
+Importing Matplotlib
+
+Just like with pandas, before we can use Matplotlib we have to import it. It's typical within data science to give Matplotlib the alias plt when importing it.
+
+As a reminder, the code would look like this:
+
+import matplotlib.pyplot as plt
+Basic Plot-Building in Matplotlibs
+
+The process for building a plot in Matplotlib can be divided into three parts: the frame, the plot, and the stylistic features.
+
+plt.figure() #The Frame: We start our plot with a figure
+plt.bar(x = data, height = data) #The Body: Declaring the specific bar plot statment
+plt.title("Example Bar Plot") #Stylistic Features: Adding the title
+plt.show() #To show our plot, we need to end our plot with a plt.show()
+Example
+
+Below is an example code to produce a simple bar chart. Try it out yourself!
+
+data = {'item_1':40, 'item_2':50, 'item_3':25} 
+items = list(data.keys())
+quantity = list(data.values())
+
+
+plt.figure()
+plt.bar(x = items, height = quantity)
+plt.show()
+
+
+
+Challenge
+Dot already has a few seeds they can use for their garden. They need to figure out which of the seeds will produce the biggest potential harvest. Can you help Dot decide which seeds are best, by using data visualization?
+
+Create a bar graph with Matplotlib that shows each vegetable and the size of the potential harvest that Dot can expect from them.
+
+Which of Dot's seeds will produce the largest harvest?
+
+Questions:
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+seeds = {
+    'Vegetable' : ['Carrots', 'Tomatoes', 'Potatoes', 'Eggplant', 'Cucumbers'],
+    'Seeds_Count' : [300,10,90,100,15],
+    'Each_Seed_Produces': [1,140,10,5, 90]
+}
+
+df = pd.DataFrame(seeds)
+
+
+Solutions:
+
+df.info()
+df['Total_Seeds'] = df['Seeds_Count'] * df['Each_Seed_Produces']
+
+plt.figure()
+plt.bar(x = df['Vegetable'], height = df['Total_Seeds'])
+plt.show()
+
+
+Key takeaway:
+
+use Matplotlib to visualized data
