@@ -1,0 +1,35 @@
+Challenge
+Help Dot by answering the following questions using a bar plot:
+
+What are the top 5 rated books in the dataset?
+
+What are the top 5 books with the highest average rating?
+
+Note: Filter out books that have low ratings_count, for question 2 filter out books with a ratings_count less than the mean.
+
+
+Question:
+
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv("books.csv")
+
+df.head(2)
+
+
+#Solution
+top_rated = df.sort_values('ratings_count', ascending = False).head(5)
+top_rated
+
+plt.figure()
+plt.barh(top_rated['title'], top_rated['ratings_count'])
+plt.show()
+
+top_ratings_filter = df.ratings_count > df.ratings_count.mean()
+top_ratings = df[top_ratings_filter]
+top_ratings = top_ratings.sort_values('average_rating', ascending = False).head()
+top_ratings
+
+plt.figure()
+plt.barh(top_ratings['title'], top_ratings['average_rating'])
+plt.show()
