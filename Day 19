@@ -1,0 +1,56 @@
+Tutorial
+While working with data, we may want to figure out the frequency distribution of a numerical dataset. The frequency distribution refers to how often each value occurs within a dataset. This can be important to know so that we can understand whether the data we are analyzing is normally distributed or skewed.
+
+The best way to visualize the distribution of our dataset is with a histogram. Histograms are a graphical representation of data using bars of different heights. Similar to bar charts, histograms group numbers into buckets. The size of each bar shows how many fall into each range.
+
+Building a histogram with MatPlotLib
+
+Here is how a histogram can be built using Matplotlib:
+
+plt.figure()
+plt.hist(df['numerical_data'], bins = 40) #Play around with the bin sizes when plotting your histogram
+plt.show()
+
+Challenge
+What type of distribution does the column avg_time have?
+
+Do games that have a great avg_rating have longer play times?
+
+Note: For question 2, filter out games that have are above the avg_rating of 9.0.
+
+Stretch
+
+As an optional bonus question, try answering:
+
+1. What type of distribution does weight have?
+
+2. What happens to the median and mean of a skewed distribution?
+
+
+
+Questions:
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv('boardgames.csv')
+df.head(3)
+
+#What type of distribution does the column avg_time have?
+# use the min/max to find out the histograms range
+print(df['avg_time'].min())
+print(df['avg_time'].max())
+
+plt.figure()
+plt.hist(df['avg_time'], bins = 10,range=(0,500)) #Play around with the bin sizes when plotting your histogram
+plt.show()
+
+
+#Do games that have a great avg_rating have longer play times?
+filter_1 = (df['avg_rating'] >= 9)
+df_1 = df[filter_1]
+
+plt.figure()
+plt.hist(df_1['avg_time'],bins = 10,range=(0,600))
+plt.show()
